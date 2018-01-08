@@ -1,0 +1,28 @@
+Machine Learning Cheatsheet: http://ml-cheatsheet.readthedocs.io  
+ATTN: a lot of content comes from above reference so that any relevant credit and copyright belong to where they deserve.
+
+<-------- General ML structure -------->
+- Goal: minimizing the pre-selected cost/loss function 
+- How to minimize the cost function: backpropagation using gradient descent (optimization method)
+- Hyper parameters for MLP (Multilayer perceptron):
+	. # of inputs
+	. # of layers
+	. # of nodes for each layer
+	. # of outputs
+	. type of activation function
+	. cost/loss function
+  . learning rate of gradient descent 
+  . stop criterion: # of epoches or accuracy 
+
+<-------- cost/loss function -------->
+Inform how good the model is at making predictions of a given set of parameters
+
+<-------- gradient descent optimizer -------->
+Gradient descent is an optimization algorithm used to minimize some function by iteratively moving in the direction of steepest descent as defined by the negative of the gradient. In machine learning, we use gradient descent to update the parameters of our model. 
+
+<-------- activation function -------->
+
+<-------- backpropagation -------->
+Idea: evaluate the impact EACH parameter has on the final prediction by using partial derivatives. This is a GLOBAL optimization but executed step by step.
+Process: calculate the partial derivatives of the cost function with respect to each parameter and store the results in a gradient.
+
