@@ -1,0 +1,57 @@
+Reference: http://ml-cheatsheet.readthedocs.io/en/latest/glossary.html
+https://deeplearning4j.org/glossary
+
+
+- Accuracy: Percentage of correct predictions made by the model
+- Attribute: A quality describing an observation (e.g. color, size, weight)
+  Different from Feature representing an attribute and value combination. Color is an attribute. “Color is blue” is a feature. 
+- Activation: An activation, or activation function, for a neural network is defined as the mapping of the input to the output via a non-linear transform function at each “node”, which is simply a locus of computation within the net. Each layer in a neural net consists of many nodes, and the number of nodes in a layer is known as its width.
+
+Activation algorithms are the gates that determine, at each node in the net, whether and to what extent to transmit the signal the node has received from the previous layer. A combination of weights (coefficients) and biases work on the input data from the previous layer to determine whether that signal surpasses a given treshhold and is deemed significant. Those weights and biases are slowly updated as the neural net minimizes its error; i.e. the level of nodes’ activation change in the course of learning. Typical activation functions such as sigmoid, relu, tanh and ELU (exponential linear unit). These activation functions allow neural networks to make complex boundary decisions for features at various levels of abstraction.
+
+- Bias term: Allow models to represent patterns that do not pass through the origin. For example, if all my features were 0, would my output also be zero? Is it possible there is some base value upon which my features have an effect? Bias terms typically accompany weights and are attached to neurons or filters.
+  . Low bias could mean every prediction is correct. It could also mean half of your predictions are above their actual values and half are below, in equal proportion, resulting in low average difference.
+  . High bias (with low variance) suggests your model may be underfitting and you’re using the wrong architecture for the job.
+
+- Variance: How tightly packed are your predictions for a particular observation relative to each other?
+  . Low variance suggests your model is internally consistent, with predictions varying little from each other after every iteration.
+  . High variance (with low bias) suggests your model may be overfitting and reading too deeply into the noise found in every training set.
+
+- Boltzmann machine:
+
+- Categorical Variables: Variables with a discrete set of possible values. Can be ordinal (order matters) or nominal (order doesn’t matter).
+- Classification: Predicting a categorical output (e.g. yes or no?, blue, green or red?).
+- Classification Threshold: The lowest probability value at which we’re comfortable asserting a positive classification. For example, if the predicted probability of being diabetic is > 50%, return True, otherwise return False.
+- Clustering: Unsupervised grouping of data into buckets.
+- Confusion Matrix: Table that describes the performance of a classification model by grouping predictions into 4 categories. 
+  . True Positives: we correctly predicted they do have diabetes
+  . True Negatives: we correctly predicted they don’t have diabetes
+  . False Positives: we incorrectly predicted they do have diabetes (Type I error)
+  . False Negatives: we incorrectly predicted they don’t have diabetes (Type II error)
+- Continuous Variables: Variables with a range of possible values defined by a number scale (e.g. sales, lifespan).
+- Deduction: A top-down approach to answering questions or solving problems. A logic technique that starts with a theory and tests that theory with observations to derive a conclusion. E.g. We suspect X, but we need to test our hypothesis before coming to any conclusions.
+- Induction: A bottoms-up approach to answering questions or solving problems. A logic technique that goes from observations to theory. E.g. We keep observing X, so we <b><i>infer</i></b> that Y must be True.
+- Epoch: an epoch is a complete pass through a given dataset. That is, by the end of one epoch, your neural network – be it a restricted Boltzmann machine, convolutional net or deep-belief network – will have been exposed to every record to example within the dataset once. Not to be confused with an iteration, which is simply one update of the neural net model’s parameters. 
+- Learning rate: The size of the update steps to take during optimization loops like Gradient Descent. With a high learning rate we can cover more ground each step, but we risk overshooting the lowest point since the slope of the hill is constantly changing. With a very low learning rate, we can confidently move in the direction of the negative gradient since we are recalculating it so frequently. A low learning rate is more precise, but calculating the gradient is time-consuming, so it will take us a very long time to get to the bottom.
+- Model: A data structure that stores a representation of a dataset (weights and biases). Models are created/learned when you train an algorithm on a dataset.
+- Normalization:
+- Regularization:
+- Overfitting: occurs when your model learns the training data too well and incorporates details and noise specific to your dataset. You can tell a model is overfitting when it performs great on your training/validation set, but poorly on your test set (or new real-world data). Basically overfitting cannot result in well generalized model.
+- Underfitting: occurs when your model over-generalizes and fails to incorporate relevant variations in your data that would give your model more predictive power. You can tell a model is underfitting when it performs poorly on both training and test sets.
+- Pooling: 
+- Max-pooling:
+- Precision: In the context of binary classification (Yes/No), precision measures the model’s performance at classifying positive observations (i.e. “Yes”). In other words, when a positive value is predicted, how often is the prediction correct? We could game this metric by only returning positive for the single observation we are most confident in.
+
+  P=TruePositives / (TruePositives+FalsePositives)
+  
+- Recall:Also called sensitivity. In the context of binary classification (Yes/No), recall measures how “sensitive” the classifier is at detecting positive instances. In other words, for all the true observations in our sample, how many did we “catch.” We could game this metric by always classifying observations as positive.
+
+  R=TruePositives / (TruePositives+FalseNegatives)
+  
+- Recall vs Precision: Say we are analyzing Brain scans and trying to predict whether a person has a tumor (True) or not (False). We feed it into our model and our model starts guessing.
+
+Precision is the % of True guesses that were actually correct! If we guess 1 image is True out of 100 images and that image is actually True, then our precision is 100%! Our results aren’t helpful however because we missed 10 brain tumors! We were super precise when we tried, but we didn’t try hard enough.
+Recall, or Sensitivity, provides another lens which with to view how good our model is. Again let’s say there are 100 images, 10 with brain tumors, and we correctly guessed 1 had a brain tumor. Precision is 100%, but recall is 10%. Perfect recall requires that we catch all 10 tumors!
+- Type 1 Error: False Positives. Consider a company optimizing hiring practices to reduce false positives in job offers. A type 1 error occurs when candidate seems good and they hire him, but he is actually bad.
+Type 2 Error: False Negatives. The candidate was great but the company passed on him.
+- 
