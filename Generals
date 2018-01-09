@@ -14,6 +14,14 @@ ATTN: a lot of content comes from above reference so that any relevant credit an
   . learning rate of gradient descent 
   . stop criterion: # of epoches or accuracy 
 
+<-------- Categories -------->
+- Linear regression:
+  . Solve estimation problems
+  . Using linear model (parameters are linear combination but the varaibales can be non-linear forms)
+- Logistic regresion:
+  . Solve classification problems
+  . Non-linear activation is needed
+
 <-------- cost/loss function -------->
 Inform how good the model is at making predictions of a given set of parameters
 
