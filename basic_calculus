@@ -1,0 +1,75 @@
+Reference: http://ml-cheatsheet.readthedocs.io/en/latest/calculus.html
+
+<------ Derivative ------> 
+- Definition: dy/dx = lim {[f(x+h) - f(x)]/h, h->0}, where y = f(x)
+- Pyhton code: (calculate derivate for a function at a given point)
+    def derivative(func, x):
+       h = 0.0001 # a very small value
+       return (func(x+h) - func(x))/h
+       
+    def f(x): # example
+       return x**3
+    
+    # calling function
+    x = 2
+    y = derivative(f, x)
+
+<------ Partial Derivative ------> 
+In functions with 2 or more variables, the partial derivative is the derivative of one variable with respect to the others. If we change x, but hold all other variables constant, how does f(x,z) change? That’s one partial derivative. The next variable is z. If we change z but hold x constant, how does f(x,z) change? We store partial derivatives in a gradient, which represents the full derivative of the multivariable function.
+- Definition: dy/dx1 = lim {[f(x1+h, x2, x3, ...) - f(x1, x2, x3, ...)]/h, h->0}, where y = f(x1, x2, x3, ...)
+              dy/dx2 = lim {[f(x1, x2+h, x3, ...) - f(x1, x2, x3, ...)]/h, h->0}, where y = f(x1, x2, x3, ...)
+
+<------ Directional Derivative ------> 
+It intends to solve the problem: what's the slope at a point along a particular direction (defined by a vector)
+- Description: function f(x,y,z) at some point (x0,y0,z0) and the direction vector is v=[vx,vy,vz]'
+- Definition: scalar value = dot product of gradient and the directional vector
+                           = [df/dx, df/dy, df/dz] . v = vy*(df/dx) + vy*(df/dy) + vz*(df/dz)
+
+<------ Chain Rule ------> 
+The chain rule is a formula for calculating the derivatives of composite functions. Composite functions are functions composed of functions inside other function(s).
+
+    Composite function derivative = outer function derivative ∗ inner function derivative
+    
+    example1: f(x) = A(B(x)) => df/dx = dA/dB * dB/dx 
+    example2: f(x) = A(B(C(x))) => df/dx = dA/dB * dB/dC * dC/dx
+
+<------ Gradient ------> 
+A gradient is a vector that stores the partial derivatives of multivariable functions. It helps us calculate the slope at a specific point on a curve for functions with multiple independent variables. In order to calculate this more complex slope, we need to isolate each variable to determine how it impacts the output on its own. To do this we iterate through each of the variables and calculate the derivative of the function after holding all other variables constant. Each iteration produces a partial derivative which we store in the gradient.
+- Python code:
+    # gradient at a given point
+    def grad(func, x, y, z): # the function contains 3 independent variables x, y, z
+        h = 0.00001 # a very small value
+        dx = (func(x+h, y, z) - func(x, y, z))/h # partial derivative for variable x
+        dy = (func(x, y+h, z) - func(x, y, z))/h # partial derivative for variable y
+        dz = (func(x, y, z+h) - func(x, y, z))/h # partial derivative for variable z
+        return dx, dy, dz
+
+- Properties of gradient:
+   . Always points in the direction of greatest increase of a function
+   . Is zero at a local maximum or local minimum
+   
+<------ Gradient descent (also called steepest descent)------> 
+Ref: https://en.wikipedia.org/wiki/Gradient_descent
+Gradient descent is a first-order iterative optimization algorithm for finding the minimum of a function. To find a local minimum of a function using gradient descent, one takes steps proportional to the negative of the gradient (or of the approximate gradient) of the function at the current point. If instead one takes steps proportional to the positive of the gradient, one approaches a local maximum of that function; the procedure is then known as gradient ascent.
+
+- problem to solve: find the minima of f(x) which useually is the loss/cost function 
+- orginal algo: fixed step size
+    . gradient: df/dx 
+    . update: x(n) = x(n-1) - alpha*(df/dx, x = x(n-1)) # where alpha is the learning rate or step size 
+    . stop criterion: f(x) is converged such that |f(x(n)) - f(x(n-1))| < preset threshold
+- Python code:
+   # assume the function derivate is already available
+   def gradient_descent(func_derivative, x, alpha, preceision): 
+      ''' x: the starting value
+          alpha: learning rate/step size
+          precision: preset threshold to stop iterations 
+      '''
+      cur_x = x
+      gap = cur_x
+      while gap > precision:
+         prev_x = cur_x # update history
+         cur_x = cur_x - alpha*func_derivative(prev_x) # update new value
+         gap = abs(cur_x - prev_x)
+      
+      return x
+      
