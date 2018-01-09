@@ -1,0 +1,64 @@
+Reference: http://ruder.io/optimizing-gradient-descent/
+
+<-------- Gradient descent variants -------->
+- Batch gradient descent (BGD): compute gradient of the cost function w.r.t. the parameters for the ENTIRE training dataset
+  . Characteristics: 
+    .. Parameter update only happen based on SAME ENTIRE training dataset epoch by epoch
+    .. Cost function is UNI-directionally reduced epoch by epoch
+  . Good:
+    .. acuracy
+    .. smooth convergency
+  . Bad: 
+    .. slow convergency
+    .. cannot update model online since all dataset is needed at once during training
+    .. memory hungry
+    .. Large computation is needed for each paramater update
+  . Python example code:
+    for i in range(nb_epochs):
+      params_grad = evaluate_gradient(loss_function, data, params)
+      params = params - learning_rate * params_grad
+  
+- Stochastic gradient descent (SGD): parameter update for EACH training example
+  . Characteristics: 
+    .. Parameter update happen after each training data
+    .. Cost function is NOT uni-directionally reduced epoch by epoch
+  . Good:
+    .. Can do online model update so that the newly trained model can reflect newly input training data
+    .. Usually converge fast
+    .. Much less computation is needed for each parameter update
+  . Bad: 
+    .. Cost function fluctuates epoch by epoch
+  . Python example code: 
+    for i in range(nb_epochs):
+      np.random.shuffle(data)
+      for example in data: // pick a training example from the training dataset
+        params_grad = evaluate_gradient(loss_function, example, params)
+        params = params - learning_rate * params_grad
+
+- Mini-batch gradient descent: middle version between batch GD and SGD
+  . Characteristics: 
+    .. Parameter update happen after a preset # of batch training data
+  . Good:
+    .. Convergence faster than BGD
+    .. Less fluctruation than SGD
+    .. Less computation is needed for each parameter update (compared to BGD)
+  . Python example code:
+    for i in range(nb_epochs):
+      np.random.shuffle(data)
+      for batch in get_batches(data, batch_size=50):
+        params_grad = evaluate_gradient(loss_function, batch, params)
+        params = params - learning_rate * params_grad
+        
+Most commonly used gradient descent approach is mini-batch gradient descent. 
+
+<-------- Challenges -------->
+- How to choose learning rate:
+  . Large value would cause fluctruation and non-convergence
+  . Small value would cause slow convergence
+- Learning rate schedules:
+  Try to adjust different learning rate according to some criterion. But the criterion itself will introduce new parameters to select
+- How to handle sparse data
+- How to do minimizing highly non-convex error functions without getting trapped in the local minima
+
+<-------- Gradient descent optimiztion algos -------->
+Many methods ...
