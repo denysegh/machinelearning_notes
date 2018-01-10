@@ -1,0 +1,15 @@
+Ref: https://deeplearning4j.org/eigenvector.html
+
+<--------- Basics --------->
+- mean: average value of data set
+  m = sum(xi, i = 1,...,N)/N
+- standard deviation: average distance of data to the mean
+  std= sqrt(sum((xi-m)^2, i=1,...,N)/(N-1)) 
+  ATTN: Why is the demoninator (N-1) instead of N ???. 
+  This is called Bessel's correction. https://en.wikipedia.org/wiki/Bessel's_correction
+  An explanation is http://vortex.ihrc.fiu.edu/MET4570/members/Lectures/Lect05/m10divideby_nminus1.pdf
+  The key is that the (N-1) case will result in unbiased estimation!
+  
+- variance: the data's spread
+  var = std^2
+  
