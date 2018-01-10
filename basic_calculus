@@ -34,6 +34,11 @@ The chain rule is a formula for calculating the derivatives of composite functio
     example2: f(x) = A(B(C(x))) => df/dx = dA/dB * dB/dC * dC/dx
 
 <------ Gradient ------> 
+Ref: https://deeplearning4j.org/neuralnet-overview
+Gradient is another word for slope, and slope, in its typical form on an x-y graph, represents how two variables relate to each other. As a neural network learns, it slowly adjusts many weights so that they can map signal to meaning correctly. The relationship between network Error and each of those weights is a derivative, dE/dw, that measures the degree to which a slight change in a weight causes a slight change in the error.
+
+[HHB] So the idea of gradient is kind of sensitivity of the error wrt a parameter assocaited to a neuron. 
+
 A gradient is a vector that stores the partial derivatives of multivariable functions. It helps us calculate the slope at a specific point on a curve for functions with multiple independent variables. In order to calculate this more complex slope, we need to isolate each variable to determine how it impacts the output on its own. To do this we iterate through each of the variables and calculate the derivative of the function after holding all other variables constant. Each iteration produces a partial derivative which we store in the gradient.
 - Python code:
     # gradient at a given point
