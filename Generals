@@ -6,8 +6,8 @@ ATTN: a lot of content comes from above reference so that any relevant credit an
 - How to minimize the cost function: backpropagation using gradient descent (optimization method)
 - Hyper parameters for MLP (Multilayer perceptron):
 	. # of inputs
-	. # of layers
-	. # of nodes for each layer
+	. depth (# of layers including input and output)
+	. width of each layer (# of neurons of each layer)
 	. # of outputs
 	. type of activation function
 	. cost/loss function
@@ -23,14 +23,32 @@ ATTN: a lot of content comes from above reference so that any relevant credit an
   . Non-linear activation is needed
 
 <-------- cost/loss function -------->
-Inform how good the model is at making predictions of a given set of parameters
+Inform how good the model is at making predictions of a given set of parameters. Basically this is the criterion for desginer to evaluate the model.
 
-<-------- gradient descent optimizer -------->
+Popular loss function (https://deeplearning4j.org/neuralnet-overview)
+- MSE: Mean Squared Error: Linear Regression
+- EXPLL: Exponential log likelihood: Poisson Regression
+- XENT: Cross Entropy: Binary Classification
+- MCXENT: Multiclass Cross Entropy
+- RMSE_XENT: RMSE Cross Entropy
+- SQUARED_LOSS: Squared Loss
+- NEGATIVELOGLIKELIHOOD: Negative Log Likelihood
+
+<-------- Gradient descent optimizer -------->
 Gradient descent is an optimization algorithm used to minimize some function by iteratively moving in the direction of steepest descent as defined by the negative of the gradient. In machine learning, we use gradient descent to update the parameters of our model. 
 
-<-------- activation function -------->
+<-------- Activation function -------->
+Ref: https://deeplearning4j.org/neuralnet-overview
+[HHB] The idea is to evaluate/weight the importance of linearly combined inputs: activated or deactivated. Surely this function is non-linear.
 
-<-------- backpropagation -------->
+Popular activation functions: 
+- Sigmoid
+- Tanh
+- ReLU
+- Leaky ReLU
+- Softmax
+
+<-------- Backpropagation -------->
 Idea: evaluate the impact EACH parameter has on the final prediction by using partial derivatives. This is a GLOBAL optimization but executed step by step.
 Process: calculate the partial derivatives of the cost function with respect to each parameter and store the results in a gradient.
 
