@@ -14,6 +14,12 @@ ATTN: a lot of content comes from above reference so that any relevant credit an
   . learning rate of gradient descent 
   . stop criterion: # of epoches or accuracy 
 
+ Example: Forward NN MLP
+ _________     _________    _________________   
+ | input |     | FC    |    | Output layer  |
+ | layer | =>  | layer | => | (classifier)  | => results
+ ---------     ---------    -----------------
+
 <-------- Categories -------->
 - Linear regression:
   . Solve estimation problems
@@ -40,6 +46,7 @@ Gradient descent is an optimization algorithm used to minimize some function by 
 <-------- Activation function -------->
 Ref: https://deeplearning4j.org/neuralnet-overview
 [HHB] The idea is to evaluate/weight the importance of linearly combined inputs: activated or deactivated. Surely this function is non-linear.
+[Ref] These input-weight products are summed and the sum is passed through a node’s so-called activation function, to determine whether and to what extent that signal progresses further through the network to affect the ultimate outcome, say, an act of classification.
 
 Popular activation functions: 
 - Sigmoid
