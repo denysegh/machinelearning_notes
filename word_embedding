@@ -1,0 +1,36 @@
+https://www.analyticsvidhya.com/blog/2017/06/word-embeddings-count-word2veec/
+
+< Purpose > 
+To create a representation for words that capture their meanings, semantic relationships and the different types of contexts they are used in.
+
+And all of these are implemented by using Word Embeddings or numerical representations of texts so that computers may handle them. In very simplistic terms, Word Embeddings are the texts converted into numbers and there may be different numerical representations of the same text. 
+
+< Types of word embedding >
+1. Frequency based embedding (deterministic methods)
+1.1) Count vector
+1.2) TF-IDF vector: 
+     Idea: takes into account not just the occurrence of a word in a single document but in the entire corpus. 
+    - TF(t) = (Number of times term t appears in a document)/(Number of terms in the document)
+    - IDF(t) = log(N/n), where, N is the number of documents, n is the number of documents a term t has appeared in
+    (penalize the word appearing often across many documents)
+    
+    - TF-IDF(t) = TF(t)*IDF(t)
+    
+1.3) Co-Occurance matrix with a fixed context window
+     Idea: Similar words tend to occur together and will have similar context
+     The sparse matrix can be decomposed by PCA, SVD.
+     Advantages:
+      - It preserves the semantic relationship between words. i.e man and woman tend to be closer than man and apple.
+      - It uses SVD at its core, which produces more accurate word vector representations than existing methods.
+      - It uses factorization which is a well-defined problem and can be efficiently solved.
+      - It has to be computed once and can be used anytime once computed. In this sense, it is faster in comparison to others.
+    Disadvantages: huge mem due to large sparse matrix decomposition. But can be handled through some advanced tricks (such as Hadoop clusters etc.)
+
+2. Prediction based embedding (probalities based method) such as word2vect
+These methods were prediction based in the sense that they provided probabilities to the words and proved to be state of the art for tasks like word analogies and word similarities.
+
+Word2vec is not a single algorithm but a combination of two techniques – CBOW(Continuous bag of words) and Skip-gram model. Both of these are shallow neural networks which map word(s) to the target variable which is also a word(s). Both of these techniques learn weights which act as word vector representations.
+
+2.1) CBOW:
+     Idea: tends to predict the probability of a word given a context. A context may be a single word or a group of words. 
+
